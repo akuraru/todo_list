@@ -10,4 +10,7 @@ class Command
 			@list = TaskList.parse_json(f.read)
 		end
 	end
+	def self.run(*args)
+		puts args
+	end
 end

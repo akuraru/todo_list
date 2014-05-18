@@ -22,27 +22,32 @@ describe TodoList do
     end
   end
 
-  shared_context '2件のタスクを追加した場合' do
-  	let(:first_description) { "description #{rand}" }
-  	let(:last_description) { "description #{rand}" }
+  shared_context 'タスクを追加した場合' do
+  	let(:list) { TaskList.new }
+  	let(:descriptions) { [] }
 	  before do 
-	  	list.add(Task.new(description: first_description))
-	  	list.add(Task.new(description: last_description))
+	  	descriptions << "description #{rand}"
+	  	list.add(Task.new(description: descriptions.last))
 	  end
   end
 
   describe '#last_description' do
-  	include_context '2件のタスクを追加した場合'
+  	include_context 'タスクを追加した場合'
+  	include_context 'タスクを追加した場合'
 
   	it '最後に追加したTODOのみの詳細を見れる' do
-  		expect(list.last_description).to eq last_description
+  		expect(list.last_description).to eq descriptions.last
+  	end
+  	it 'count' do
+  		expect(list.count).to eq 2
   	end
   end
   describe '#first_description' do
-  	include_context '2件のタスクを追加した場合'
+  	include_context 'タスクを追加した場合'
+  	include_context 'タスクを追加した場合'
 
 	  it '最初に追加したTODOのみの詳細を見れる' do
-	  	expect(list.first_description).to eq first_description
+	  	expect(list.first_description).to eq descriptions.first
 	  end
   end
   describe '#to_json' do
