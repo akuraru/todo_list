@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'json'
 
 describe TodoList do
   it 'has a version number' do
@@ -39,5 +40,16 @@ describe TodoList do
 	  it '最初に追加したTODOのみの詳細を見れる' do
 	  	expect(list.first_description).to eq first_description
 	  end
+  end
+  describe '#to_json' do
+  	let(:expected) do
+  		JSON.dump [{description: '1st'}, {description: '2nd'}]
+  	end
+  	before do
+  		list.add(Task.new(description: '1st'))
+  		list.add(Task.new(description: '2nd'))
+  	end
+
+  	it { expect(list.to_json).to eq expected }
   end
 end

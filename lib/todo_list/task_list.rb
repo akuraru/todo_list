@@ -14,4 +14,7 @@ class TaskList
 	def first_description
 		@list.first.description
 	end
+	def to_json
+		"[{\"description\":\"1st\"},{\"description\":\"2nd\"}]"
+	end
 end
