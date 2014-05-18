@@ -1,4 +1,5 @@
 class Command
+	attr_reader :list
 	def save(list)
 		File.open('db.json') do |f|
 			f.write list.to_json
@@ -6,7 +7,7 @@ class Command
 	end
 	def load
 		File.open('db.json') do |f|
-			f.read
+			@list = TaskList.parse_json(f.read)
 		end
 	end
 end

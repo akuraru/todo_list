@@ -16,12 +16,14 @@ describe Command do
 	end
 	describe '#load' do
 		let(:list) { TaskList.new }
+		let(:json) { JSON.dump [{description: '1st'}] }
 		before do
-			file.stub(:read)
+			list.add(Task.new(description: '1st'))
+			file.stub(:read).and_return(json)
 			File.stub(:open).and_yield(file)
 			command.load
 		end
 		it { expect(file).to have_received(:read) }
-		xit { expect(command.list).to eq list }
+		it { expect(command.list).to eql list }
 	end
 end
