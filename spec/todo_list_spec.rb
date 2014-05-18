@@ -62,5 +62,12 @@ describe TodoList do
 
 	  	it { expect(list.to_json).to eq expected }
   	end
+  	describe '.parse_json' do
+	  	let(:json) { JSON.dump [{description: '1st'}] }
+  		before do
+  			list.add(Task.new(description: '1st'))
+  		end
+  		it { expect(TaskList.parse_json(json)).to eql list }
+  	end
   end
 end

@@ -19,4 +19,14 @@ class TaskList
 	def to_json
 		JSON.dump @list.map(&:as_json)
 	end
+	def self.parse_json(json)
+		list = self.new
+		JSON.parse(json).each do |t|
+			list.add(Task.new(description: t["description"]))
+		end
+		list
+	end
+	def eql?(other)
+		to_json == other.to_json 
+	end
 end
