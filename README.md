@@ -1,4 +1,6 @@
-# TodoList
+# TodoList WIP
+
+https://gist.github.com/kyonmm/6102436
 
 TODO: Write a gem description
 
