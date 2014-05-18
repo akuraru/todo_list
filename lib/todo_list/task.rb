@@ -1,4 +1,7 @@
 class Task
-	def initialize(*args)
+	attr_reader :description
+
+	def initialize(**attributes)
+		@description = attributes[:description]
 	end
 end

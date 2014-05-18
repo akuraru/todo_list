@@ -9,6 +9,6 @@ class TaskList
 		@list.count
 	end
 	def last_description
-		'description'
+		@list.last.description
 	end
 end
