@@ -8,4 +8,7 @@ class TaskList
 	def count
 		@list.count
 	end
+	def last_description
+		'description'
+	end
 end
