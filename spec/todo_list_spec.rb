@@ -42,14 +42,25 @@ describe TodoList do
 	  end
   end
   describe '#to_json' do
-  	let(:expected) do
-  		JSON.dump [{description: '1st'}, {description: '2nd'}]
+  	context '1stのタスクがある場合' do
+	  	let(:expected) do
+	  		JSON.dump [{description: '1st'}]
+	  	end
+	  	before do
+	  		list.add(Task.new(description: '1st'))
+	  	end
+	  	xit { expect(list.to_json).to eq expected }
   	end
-  	before do
-  		list.add(Task.new(description: '1st'))
-  		list.add(Task.new(description: '2nd'))
-  	end
+  	context '1st, 2ndのタスクがある場合' do
+	  	let(:expected) do
+	  		JSON.dump [{description: '1st'}, {description: '2nd'}]
+	  	end
+	  	before do
+	  		list.add(Task.new(description: '1st'))
+	  		list.add(Task.new(description: '2nd'))
+	  	end
 
-  	it { expect(list.to_json).to eq expected }
+	  	it { expect(list.to_json).to eq expected }
+  	end
   end
 end
