@@ -1,8 +1,11 @@
 class TaskList
-	def add(task)
+	def initialize
+		@list = []
 	end
-
+	def add(task)
+		@list << task
+	end
 	def count
-		1
+		@list.count
 	end
 end
