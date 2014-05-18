@@ -11,4 +11,7 @@ class TaskList
 	def last_description
 		@list.last.description
 	end
+	def first_description
+		@list.first.description
+	end
 end

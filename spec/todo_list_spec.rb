@@ -30,4 +30,14 @@ describe TodoList do
   		expect(list.last_description).to eq last_description
   	end
   end
+  describe '#first_description' do
+  	let(:first_description) { "description #{rand}" }
+  	before do
+	  	list.add(Task.new(description: first_description))
+	  	list.add(Task.new(description: 'second description'))
+	  end
+	  it '最初に追加したTODOのみの詳細を見れる' do
+	  	expect(list.first_description).to eq first_description
+	  end
+  end
 end
