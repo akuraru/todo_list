@@ -1,3 +1,5 @@
+require 'json'
+
 class TaskList
 	def initialize
 		@list = []
@@ -15,6 +17,6 @@ class TaskList
 		@list.first.description
 	end
 	def to_json
-		"[{\"description\":\"1st\"},{\"description\":\"2nd\"}]"
+		JSON.dump @list.map(&:as_json)
 	end
 end

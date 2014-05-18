@@ -6,7 +6,10 @@ class Task
 	def initialize(**attributes)
 		@description = attributes[:description]
 	end
+	def as_json
+		{description: @description}
+	end
 	def to_json
-		JSON.dump(description: @description)
+		JSON.dump(as_json)
 	end
 end

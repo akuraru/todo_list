@@ -49,7 +49,7 @@ describe TodoList do
 	  	before do
 	  		list.add(Task.new(description: '1st'))
 	  	end
-	  	xit { expect(list.to_json).to eq expected }
+	  	it { expect(list.to_json).to eq expected }
   	end
   	context '1st, 2ndのタスクがある場合' do
 	  	let(:expected) do
